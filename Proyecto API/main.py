@@ -1,4 +1,5 @@
-from UI.user_interface import ask_info_to_user, print_table
+#Funciones importadas de los paquetes y modulos
+from UI.user_interface import ask_info_to_user, print_table 
 from API.api import api_casos 
 
 def main ():
