@@ -10,7 +10,7 @@ def api_casos(limit_records, departament):
     results = client.get ("gt2j-8ykr", limit = limit_records , departamento_nom = departament, select = selected_data )
 
     results_df = pd.DataFrame(results)
-    print(results_df.columns)
+    #print(results_df.columns)
     
     return results_df
 

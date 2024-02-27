@@ -41,6 +41,7 @@ def ask_info_to_user():
 #Imprime la informacion del DataFrame en una tabla
 def print_table(datas):
     headers = ["N°","Ciudad de Ubicacion", "Departamento", "Edad", "Tipo", "Estado", "Pais de Procedencia"]
+    datas.index = range(1, len(datas) + 1) #para que el indice comience desde 1
     print(tabulate(datas, headers=headers))
 
 
