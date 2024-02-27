@@ -42,7 +42,7 @@ def ask_info_to_user():
 def print_table(datas):
     headers = ["N°","Ciudad de Ubicacion", "Departamento", "Edad", "Tipo", "Estado", "Pais de Procedencia"]
     datas.index = range(1, len(datas) + 1) #para que el indice comience desde 1
-    print(tabulate(datas, headers=headers))
+    print(tabulate(datas, headers=headers, tablefmt = "double_grid"))
 
 
 
