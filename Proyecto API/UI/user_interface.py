@@ -20,15 +20,14 @@ def menu_departaments():
 #Pregunta la informacion necesaria al usuario, se usa en el main
 def ask_info_to_user():
     menu_departaments()
-    opcion_depart = int(input("Ingresa la opcion que corresponda al departamento que desea consultar: "))
+    departament = list_departaments()
+    opcion_depart = input("Ingresa el departamento que desea consultar: ").upper()
 
     #si la opcion se pasa de los limites de los departamentos no lo deja salir del bucle
-    while (opcion_depart <= 0 or opcion_depart > 32):
-        print("Opcion ingresada invalida.")
-        opcion_depart = int(input("Ingresa una opcion valida: "))
-    
-    departament_list = list_departaments()
-    departament = departament_list[opcion_depart - 1] #se asigna el departamento (str) de la opcion ingresada 
+    while(opcion_depart not in departament):
+        print("El departamento ingresado no es valido.\n")
+        opcion_depart = input("Ingresa el departamento que desea consultar: ").upper()
+     
     limit_records = int(input("Ingresa la cantidad de registros para mostrar: "))
 
     #si la opcion se pasa de los limites de los departamentos no lo deja salir del bucle
@@ -36,11 +35,11 @@ def ask_info_to_user():
         print("Cantidad de registros no válidos")
         limit_records = int(input("Ingresa una cantidad de registros válida (0 - 999): "))
         
-    return limit_records, departament
+    return limit_records, opcion_depart
 
 #Imprime la informacion del DataFrame en una tabla
 def print_table(datas):
-    headers = ["N°","Ciudad de Ubicacion", "Departamento", "Edad", "Tipo", "Estado", "Pais de Procedencia"]
+    headers = ["N°","Ciudad de Ubicacion", "Departamento", "Edad", "Tipo de Contagio", "Estado", "Pais de Procedencia"]
     datas.index = range(1, len(datas) + 1) #para que el indice comience desde 1
     print(tabulate(datas, headers=headers, tablefmt = "double_grid"))
 
