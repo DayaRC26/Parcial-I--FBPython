@@ -1,21 +1,22 @@
 import pandas as pd
-import numpy as np
 from sodapy import Socrata
 
+def change_type_float(results_df):
+    results_df["ph_agua_suelo_2_5_1_0"] = results_df["ph_agua_suelo_2_5_1_0"].astype(float)
+    results_df["f_sforo_p_bray_ii_mg_kg"] = results_df["f_sforo_p_bray_ii_mg_kg"].astype(float)
+    results_df["potasio_k_intercambiable_cmol_kg"] = results_df["potasio_k_intercambiable_cmol_kg"].astype(float)
+
+    return results_df
+
+
 #obtiene  la informacion del API, recibe dos parametros
-def api_casos(limit_records, departament):
+def obtener_df_api(user_input):
     client = Socrata ("www.datos.gov.co", None )
 
-    #corresponde a la informacion que se le pide al api
-    selected_data = "ciudad_municipio_nom, departamento_nom, edad, fuente_tipo_contagio, estado, pais_viajo_1_nom"
-    results = client.get ("gt2j-8ykr", limit = limit_records , departamento_nom = departament, select = selected_data )
-    results_df = pd.DataFrame(results)
-
-    results_df['edad'] = pd.to_numeric(results_df['edad'])
-    if 'pais_viajo_1_nom' not in results_df.columns:
-        results_df['pais_viajo_1_nom'] = pd.NA
-
-    results_df.fillna("Sin Registro", inplace = True)
+    selected_data = "departamento, municipio, cultivo, topografia, ph_agua_suelo_2_5_1_0, f_sforo_p_bray_ii_mg_kg, potasio_k_intercambiable_cmol_kg"
+    results = client.get ("ch4u-f3i5", limit = user_input[0], departamento = user_input[1], municipio = user_input[2], cultivo = user_input[3], select = selected_data )
+    results_data = pd.DataFrame(results)
+    results_df = change_type_float(results_data)
 
     return results_df
 
