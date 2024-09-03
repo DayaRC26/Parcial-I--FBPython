@@ -50,20 +50,15 @@ def calcule_median(df):
 
     return median_ph, median_p, median_k
 
-def extract_info_df(df):
-    departamento = df['departamento'].iloc[0]
-    municipio = df['municipio'].iloc[0]
-    cultivo = df['cultivo'].iloc[0]
-    topografia = df['topografia'].iloc[0]
-    median_ph, median_p, median_k = calcule_median(df)
-    datos = [departamento, municipio, cultivo, topografia, median_ph, median_p, median_k]
-
-    return datos
-
 #Imprime la informacion del DataFrame en una tabla
 def print_table(datas):
-    datos = extract_info_df(datas)
     headers = ["Departamento","Municipio", "Cultivo", "Topología", "pH", "Fosforo", "Potasio"]
-    print(tabulate([datos], headers=headers, tablefmt = "double_grid"))
+    print(tabulate(datas, headers=headers, tablefmt = "double_grid"))
+
+def show_median_message(df):
+    median_ph, median_p, median_k = calcule_median(df)
+    print("\nMediana de pH Suelo: ", median_ph)
+    print("Mediana del Fosforo: ", median_p)
+    print("Mediana del Potasio: ", median_k)
 
 
