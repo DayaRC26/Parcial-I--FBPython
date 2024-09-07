@@ -5,7 +5,7 @@ def list_departaments():
     departament = ["AMAZONAS", "ANTIOQUIA", "ARAUCA", "ATLANTICO", "BOLIVAR", "BOYACA", "CALDAS",
     "CAQUETA","CASANARE", "CAUCA", "CESAR", "CHOCO", "CORDOBA", "CUNDINAMARCA", "GUAINIA", "GUAVIARE",
     "HUILA", "GUAJIRA", "MAGDALENA", "META", "NARINO", "NORTE SANTANDER", "PUTUMAYO", "QUINDIO", 
-    "RISARALDA", "SAN ANDRES", "SANTANDER", "SUCRE", "TOLIMA", "VALLE", "VAUPES", "VICHADA"]
+    "RISARALDA", "SAN ANDRES", "SANTANDER", "SUCRE", "TOLIMA", "VALLE DEL CAUCA", "VAUPES", "VICHADA"]
     return departament
 
 #Imprime el menu de departamentos    
